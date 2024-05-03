@@ -1,31 +1,30 @@
 """
-Make a program who guesses the number:
-
-# no of guesses =  9
-# print no. of guesses left
-# No. of guesses to finish
-# game over
+Problem Statement:
+Make a program that guesses the number between 1 to 100 in 10 attempts and they run until you think the correct number.
 """
 
-n=18
+import random
 
-number_of_guesses=1
-print("Number of guesses is limited to only 9 times: ")
+def guess_number():
+    number = random.randint(1, 100)
+    attempts = 0
 
-while (number_of_guesses<=9):
-    guess_number = int(input("Guess the number :\n"))
+    print("Welcome to the Number Guessing Game!")
+    print("I have selected a number between 1 and 100. You have 10 attempts to guess it.")
 
-    if guess_number<18:
-        print("you enter less number please input greater number.\n")
-    elif guess_number>18:
-        print("you enter greater number please input smaller number.\n ")
-    else:
-        print("you won\n")
-        print(number_of_guesses,"no.of guesses he took to finish.")
-        break
-    print(9-number_of_guesses,"no. of guesses left")
-    number_of_guesses = number_of_guesses + 1
+    while attempts < 10:
+        guess = int(input("Enter your guess: "))
+        attempts += 1
 
-if(number_of_guesses>9):
-    print("Game Over")
+        if guess < number:
+            print("Too low. Try again.")
+        elif guess > number:
+            print("Too high. Try again.")
+        else:
+            print(f"Congratulations! You guessed the number in {attempts} attempts.")
+            break
 
+    if guess != number:
+        print(f"Sorry, you have run out of attempts. The number was {number}.")
+
+guess_number()
